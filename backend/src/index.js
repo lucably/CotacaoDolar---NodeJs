@@ -54,12 +54,9 @@ const urlBase = () => {
 
 }
 
-const getCoinsBetweenDate = () => {
+const getCoinsBetweenDate = (req) => {
 
-    const dateI = '11-11-2017'
-    const dateF = '12-12-2018'
-
-    return api.get(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='${dateI}'&@dataFinalCotacao='${dateF}'&$top=100&$format=json`).then(function (resposta) {
+    return api.get(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial='${req.query.dataI}'&@dataFinalCotacao='${req.query.dataF}'&$top=100&$format=json`).then(function (resposta) {
         return resposta.data;
     }).catch(function (error) {
         console.log(error);

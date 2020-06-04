@@ -14,7 +14,7 @@ Router.get('/', (req, res) => {
 
 
 Router.get('/moedaBetween', (req, res) => {
-    getCoinsBetweenDate().then(data => {
+    getCoinsBetweenDate(req).then(data => {
         res.json({
             data
         })
